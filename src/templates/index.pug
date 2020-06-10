@@ -1,9 +1,39 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Document
-  body
-    h1 hey pugさん!
+extends _layout.pug
+block content
+  h1 コンテンツです
+  -
+    var pets = [
+      "cat", "dog", "pig","pug"
+      ]
+
+  each petName in pets
+    include pet.pug
+
+  -
+    var title = "On Dogs: Man's Best Friend";
+    var test = "lorem"
+    var auther = "enlore";
+    var theGreat = "<span>escape!</span>"
+  h2= title.toUpperCase()
+  p #{author}
+  p \#{theGreat}
+  p.
+    Lorem
+    ipsum dolor sit amet,
+    consectetur adipisicing elit,
+    sed do eiusmod tempor
+    incididunt ut labore et
+    dolore magna aliqua.
+  p
+    | こんにちわ
+  ul
+    each val, i in["犬", "猫", "豚"]
+      li= i + ": " + val
+
+  - var values = ["a","b","c"];
+  ul
+    each val in values.length ? values : ["there are not val"]
+      li= val
+  - var n = 0;
+  while n < 4
+    p= n++

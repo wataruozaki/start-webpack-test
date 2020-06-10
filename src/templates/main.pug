@@ -1,0 +1,29 @@
+extends _layout.pug
+block content
+  h1 hello!
+  +pet("犬")
+  +pet("猫")
+  +pet("豚")
+  +article("hello world")
+  +link("index.html","ホームへ戻る")(id="btn")
+  +list("my-list",1,2,3,4,5)
+
+mixin pet(name)
+  p.pet= name
+
+mixin article(title)
+  h1= title
+  if block
+    block
+  else
+    p No content privided
+
+mixin link(href, name)
+  a(id!=attributes.id href=href)= name
+
+mixin list(id, ...items)
+  ul(id=id)
+    each item in items
+      li= item
+
+
